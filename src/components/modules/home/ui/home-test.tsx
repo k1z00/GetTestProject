@@ -1,27 +1,18 @@
 import React from "react";
 import { Input, Button } from "antd";
-import { useFetchStore } from "../store/store-home";
-import { useTestStore } from "../../test/store/store-test";
+import { useFetchStore } from "../../store/store-test";
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useNavigate } from "react-router-dom";
-import './home-test.css'
+import "./home-test.css";
 
 const { TextArea } = Input;
 
 const HomeCreateTest: React.FC = () => {
-  const {
-    title,
-    source,
-    loading,
-    error,
-    setTitle,
-    setSource,
-    setLoading,
-    setError,
-    setIsSuccess,
-     resetForm
-  } = useFetchStore();
- const { setData } = useTestStore();
+  const { setTest } = useFetchStore();
+  const [title, setTitle] = React.useState("");
+  const [source, setSource] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,18 +24,20 @@ const HomeCreateTest: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    
+    if (!title || !source) {
+      setError("Пожалуйста, заполните все поля.");
+      return;
+    }
+
     setLoading(true);
     setError(null);
-    setIsSuccess(false);
+
     try {
-      const response = await apiClient.FetchTest(title, source); 
-       setData(response); 
-      setIsSuccess(true); 
-      navigate("/test", { state: { testData: response } }); 
-       resetForm();
+      const response = await apiClient.FetchTest(title, source);
+      setTest(response);
+      navigate("/test");
     } catch (error) {
-      setError("Failed to generate test. Please try again.");
+      setError("Не удалось сгенерировать тест. Попробуйте позже.");
     } finally {
       setLoading(false);
     }
@@ -53,23 +46,23 @@ const HomeCreateTest: React.FC = () => {
   return (
     <div className="test-container">
       <div className="test-items">
-        <h1 className="test-title">Fetch Data</h1>
+        <h1 className="test-title">Создать тест</h1>
         <div className="test-inputfield">
           <TextArea
             rows={19}
-            placeholder="Title"
+            placeholder="Заголовок"
             value={title}
             onChange={handleTextAreaChange}
             className="test-texarea"
           />
           <div className="test-input">
             <Input
-              placeholder="Source"
+              placeholder="Источник"
               value={source}
               onChange={handleInputChange}
             />
             <Button onClick={handleSubmit} disabled={loading}>
-              {loading ? "Loading..." : "Fetch Data"}
+              {loading ? "Загрузка..." : "Создать тест"}
             </Button>
           </div>
         </div>

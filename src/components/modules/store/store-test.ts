@@ -19,13 +19,13 @@ interface TestResponse {
 }
 
 interface FetchState {
-  data: TestResponse | null;
-  setData: (data: TestResponse) => void;
-  resetData: () => void;
+  test: TestResponse | null; 
+  setTest: (test: TestResponse) => void; 
+  resetTest: () => void; 
 }
 
-export const useTestStore = create<FetchState>((set) => ({
-  data: null,
-  setData: (data: TestResponse) => set({ data }),
-  resetData: () => set({ data: null }),
+export const useFetchStore = create<FetchState>((set) => ({
+  test: null, 
+  setTest: (test: TestResponse) => set({ test }),
+  resetTest: () => set({ test: null }), 
 }));
