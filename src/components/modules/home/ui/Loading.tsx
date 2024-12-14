@@ -1,4 +1,4 @@
-import './loading.css'
+import '../style/loading.css'
 
 const Loading: React.FC = () => {
     return (

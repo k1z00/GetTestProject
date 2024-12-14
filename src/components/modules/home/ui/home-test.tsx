@@ -3,7 +3,8 @@ import { Input, Button } from "antd";
 import { useFetchStore } from "../../store/store-test";
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useNavigate } from "react-router-dom";
-import "./home-test.css";
+import Loading from "./Loading";
+import "../style/home-test.css";
 
 const { TextArea } = Input;
 
@@ -45,30 +46,33 @@ const HomeCreateTest: React.FC = () => {
 
   return (
     <div className="test-container">
-      <div className="test-items">
-        <h1 className="test-title">Создать тест</h1>
-        <div className="test-inputfield">
-          <TextArea
-            rows={19}
-            placeholder="Заголовок"
-            value={title}
-            onChange={handleTextAreaChange}
-            className="test-texarea"
-          />
-          <div className="test-input">
-            <Input
-              placeholder="Источник"
-              value={source}
-              onChange={handleInputChange}
+      {loading && <Loading />}
+      {!loading && (
+        <div className="test-items">
+          <h2 className="test-title">Создать тест</h2>
+          <div className="test-inputfield">
+            <TextArea
+              rows={19}
+              placeholder="Заголовок"
+              value={title}
+              onChange={handleTextAreaChange}
+              className="test-texarea"
             />
-            <Button onClick={handleSubmit} disabled={loading}>
-              {loading ? "Загрузка..." : "Создать тест"}
-            </Button>
+            <div className="test-input">
+              <Input
+                placeholder="Источник"
+                value={source}
+                onChange={handleInputChange}
+              />
+              <Button onClick={handleSubmit} disabled={loading}>
+                {loading ? "Загрузка..." : "Создать тест"}
+              </Button>
+            </div>
           </div>
-        </div>
 
-        {error && <div style={{ color: "red" }}>{error}</div>}
-      </div>
+          {error && <div style={{ color: "red" }}>{error}</div>}
+        </div>
+      )}
     </div>
   );
 };

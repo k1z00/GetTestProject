@@ -1,0 +1,48 @@
+.page-test-container{
+    margin: auto;
+     width: 60%;
+    background-color:  #3E5F8A;
+   
+}
+
+.page-test-title{
+    margin-bottom: 30px;
+}
+
+.page-test-items{
+ padding: 100px 150px ;
+ border-radius: 25px;
+ margin-top: 200px;
+background-color: rgb(206, 205, 205);
+}
+
+.page-ques-ul{
+    padding: 0;
+}
+
+
+.page-quesion{
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 50px;
+
+}
+
+.page-quesion ul{
+    list-style-type: none;
+}
+
+
+
+.page-ques-title{
+    margin-bottom: 50px;
+}
+
+.ques-options{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-radio-inner::after {
+  display: none !important;
+}
