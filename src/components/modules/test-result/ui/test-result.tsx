@@ -1,11 +1,26 @@
 
 
-const ResultTest:React.FC = () => {
-return (
-  <div>
-    <h1>eddas</h1>
-  </div>
-);
-}
+import React from "react";
+import { useLocation } from "react-router-dom";
 
-export default ResultTest
+const ResultTest: React.FC = () => {
+  const location = useLocation();
+  const { answers } = location.state as { answers: number[] };
+
+  console.log(answers);
+
+  return (
+    <div>
+      <h2>Результаты теста</h2>
+      <ul>
+        {answers.map((answerIndex, index) => (
+          <li key={index}>
+            Вопрос {index + 1}: Выбран ответ {answerIndex + 1} Правильный ответ 
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ResultTest;

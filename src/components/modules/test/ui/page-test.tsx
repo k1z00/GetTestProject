@@ -79,7 +79,7 @@ const PageTest: React.FC = () => {
               disabled={!isAnswerSelected}
               type="primary"
             >
-              Следующий вопро
+              Следующий вопрос
             </Button>
           )}
 

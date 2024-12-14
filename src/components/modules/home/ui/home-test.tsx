@@ -65,7 +65,7 @@ const HomeCreateTest: React.FC = () => {
                 onChange={handleInputChange}
               />
               <Button onClick={handleSubmit} disabled={loading}>
-                {loading ? "Загрузка..." : "Создать тест"}
+                 Создать тест
               </Button>
             </div>
           </div>
