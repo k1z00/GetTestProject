@@ -1,0 +1,39 @@
+.test-container{
+margin-top: 300px;
+margin-bottom: 100px;
+
+}
+
+.test-items{
+    width: 70%;
+    margin: auto;
+}
+
+.test-title{
+    text-align: center;
+    color:white;
+    margin-bottom: 75px;
+}
+
+
+.test-item-input{
+    display: flex;
+}
+.test-items-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.test-item-input{
+    display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Две колонки одинаковой ширины */
+  gap: 20px
+}
+
+.test-input{
+    display: flex;
+}
+.test-texarea{
+    margin-bottom: 5px;
+}
