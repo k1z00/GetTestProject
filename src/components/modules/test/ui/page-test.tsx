@@ -39,6 +39,10 @@ const PageTest: React.FC = () => {
 });
   }
 
+  console.log(selectedAnswers);
+
+
+
  const isAnswerSelected = selectedAnswers[selectedQuestionIndex] !== undefined;
   const currentQuestion = test.questions[selectedQuestionIndex];
 

@@ -1,0 +1,23 @@
+.result-container{
+    width: 40%;
+    margin: auto;
+    margin-top: 200px;
+    background-color: rgb(206, 205, 205);
+    border-radius: 15px ;
+   
+}
+
+.result-items{
+ padding: 100px;
+}
+
+.result-items-title{
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+
+.result-items-ul{
+    list-style-type: none;
+    padding: 0;
+}
