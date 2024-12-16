@@ -4,13 +4,15 @@ import {  Button, Radio } from "antd";
 import "../style/page-test.css";
 import { useNavigate } from "react-router-dom";
 
-const PageTest: React.FC = () => {
+
+const TestContent: React.FC  = () => {
   const { test } = useFetchStore();
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number>(0);
+   const navigate = useNavigate();
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>(
     new Array(test?.questions.length).fill(undefined)
   );
-  const navigate = useNavigate()
+ 
 
   if (!test) {
     return <div>Загрузка данных...</div>;
@@ -22,31 +24,22 @@ const PageTest: React.FC = () => {
     setSelectedAnswers(newSelectedAnswers);
   };
 
-
-  
   const handleNextQuestion = () => {
     if (selectedQuestionIndex < test.questions.length - 1) {
       setSelectedQuestionIndex((prev) => prev + 1);
     }
   };
 
- 
-
-
   const handleFinish = () => {
     navigate("/results", {
-  state: { answers: selectedAnswers}, 
-});
-  }
+      state: { answers: selectedAnswers },
+    });
+  };
 
   console.log(selectedAnswers);
 
-
-
- const isAnswerSelected = selectedAnswers[selectedQuestionIndex] !== undefined;
+  const isAnswerSelected = selectedAnswers[selectedQuestionIndex] !== undefined;
   const currentQuestion = test.questions[selectedQuestionIndex];
-
-
 
   return (
     <div className="page-test-container">
@@ -77,29 +70,23 @@ const PageTest: React.FC = () => {
           </li>
         </ul>
         <div className="navigation-buttons">
-          {selectedQuestionIndex < test.questions.length - 1 && (
-            <Button
-              onClick={handleNextQuestion}
-              disabled={!isAnswerSelected}
-              type="primary"
-            >
-              Следующий вопрос
-            </Button>
-          )}
-
-          {selectedQuestionIndex === test.questions.length - 1 && (
-            <Button
-              type="primary"
-              onClick={handleFinish}
-              disabled={!isAnswerSelected}
-            >
-              Завершить тест
-            </Button>
-          )}
+          <Button
+            type="primary"
+            onClick={
+              selectedQuestionIndex < test.questions.length - 1
+                ? handleNextQuestion
+                : handleFinish
+            }
+            disabled={!isAnswerSelected}
+          >
+            {selectedQuestionIndex < test.questions.length - 1
+              ? "Следующий вопрос"
+              : "Завершить тест"}
+          </Button>
         </div>
       </div>
     </div>
   );
 };
 
-export default PageTest;
+export default TestContent;

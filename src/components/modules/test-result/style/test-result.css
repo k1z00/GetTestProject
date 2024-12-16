@@ -1,23 +1,33 @@
-.result-container{
-    width: 40%;
-    margin: auto;
-    margin-top: 200px;
-    background-color: rgb(206, 205, 205);
-    border-radius: 15px ;
-   
+.result-container {
+  width: 40%;
+  margin: auto;
+  margin-top: 200px;
+  background-color: rgb(211, 211, 211);
+  border-radius: 15px;
 }
 
-.result-items{
- padding: 100px;
+.result-card {
+  background-color: rgb(206, 205, 205);
+  color: white;
+  background-color: white;
 }
 
-.result-items-title{
-    text-align: center;
-    margin-bottom: 50px;
-
+.result-card-title {
+  color: white;
+  margin: 0;
 }
 
-.result-items-ul{
-    list-style-type: none;
-    padding: 0;
+.result-card-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.result-card-button {
+  margin-bottom: 12px;
+}
+
+.strong-queshion{
+    margin-right: 30px;
 }

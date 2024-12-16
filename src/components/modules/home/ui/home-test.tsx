@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Button } from "antd";
+import { Input, Button, message } from "antd";
 import { useFetchStore } from "../../store/store-test";
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,9 @@ const HomeCreateTest: React.FC = () => {
   const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
 
+  // Используем хук message.useMessage
+  const [messageApi, contextHolder] = message.useMessage();
+
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
   };
@@ -26,19 +29,18 @@ const HomeCreateTest: React.FC = () => {
 
   const handleSubmit = async () => {
     if (!title || !source) {
-      setError("Пожалуйста, заполните все поля.");
+      messageApi.error("Пожалуйста, заполните все поля.");
       return;
     }
-
     setLoading(true);
     setError(null);
-
     try {
       const response = await apiClient.FetchTest(title, source);
       setTest(response);
       navigate("/test");
+      messageApi.success("Тест успешно создан!");
     } catch (error) {
-      setError("Не удалось сгенерировать тест. Попробуйте позже.");
+      messageApi.error("Не удалось сгенерировать тест. Попробуйте позже.");
     } finally {
       setLoading(false);
     }
@@ -46,6 +48,7 @@ const HomeCreateTest: React.FC = () => {
 
   return (
     <div className="test-container">
+      {contextHolder}
       {loading && <Loading />}
       {!loading && (
         <div className="test-items">
@@ -65,12 +68,10 @@ const HomeCreateTest: React.FC = () => {
                 onChange={handleInputChange}
               />
               <Button onClick={handleSubmit} disabled={loading}>
-                 Создать тест
+                Создать тест
               </Button>
             </div>
           </div>
-
-          {error && <div style={{ color: "red" }}>{error}</div>}
         </div>
       )}
     </div>
