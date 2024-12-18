@@ -1,0 +1,28 @@
+.test-list-contsiner{
+    background-color: rgb(206, 205, 205);
+    display: flex;
+    width: 50%;
+    border-radius: 15px;
+    margin:150px auto;
+}
+
+.test-list-items{
+    padding: 60px;
+}
+
+.test-list-items-li{
+    margin-bottom: 70px;
+}
+
+.test-list-items-title{
+   margin: 0px;
+}
+
+.test-list-items-ul{
+    list-style-type: none;
+    
+}
+
+.test-list-items-head{
+ margin-bottom: 50px;
+}

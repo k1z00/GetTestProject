@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFetchStore } from "../../store/store-test";
-import {  Button, Radio } from "antd";
+import { Button, Radio } from "antd";
 import "../style/page-test.css";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-
-const TestContent: React.FC  = () => {
-  const { test } = useFetchStore();
+const TestContent: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const { test, fetchTestById } = useFetchStore();
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number>(0);
-   const navigate = useNavigate();
-  const [selectedAnswers, setSelectedAnswers] = useState<number[]>(
-    new Array(test?.questions.length).fill(undefined)
-  );
- 
+  const navigate = useNavigate();
+  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
+
+  
+  useEffect(() => {
+    if (id) {
+      fetchTestById(Number(id));
+    }
+  }, [id, fetchTestById]);
+
+  
+  useEffect(() => {
+    if (test && test.questions) {
+      setSelectedAnswers(new Array(test.questions.length).fill(undefined));
+    }
+  }, [test]);
 
   if (!test) {
     return <div>Загрузка данных...</div>;
@@ -31,12 +42,10 @@ const TestContent: React.FC  = () => {
   };
 
   const handleFinish = () => {
-    navigate("/results", {
+    navigate(`/results/${id}`, {
       state: { answers: selectedAnswers },
     });
   };
-
-  console.log(selectedAnswers);
 
   const isAnswerSelected = selectedAnswers[selectedQuestionIndex] !== undefined;
   const currentQuestion = test.questions[selectedQuestionIndex];
@@ -55,7 +64,6 @@ const TestContent: React.FC  = () => {
                     <div className="ques-options">
                       <p>{answer.value}</p>
                       <Radio
-                        type="radio"
                         name={`question-${selectedQuestionIndex}`}
                         checked={
                           selectedAnswers[selectedQuestionIndex] === answerIndex

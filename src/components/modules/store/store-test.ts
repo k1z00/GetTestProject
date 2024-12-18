@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { apiClient } from "../../../shared/lib/api-client";
 
 interface Answer {
   value: string;
@@ -12,20 +13,31 @@ interface Question {
 }
 
 interface TestResponse {
+  id?: number;
   title: string;
   seed: string;
   source: string;
   questions: Question[];
+  counts: number;
 }
 
 interface FetchState {
-  test: TestResponse | null; 
-  setTest: (test: TestResponse) => void; 
-  resetTest: () => void; 
+  test: TestResponse | null;
+  setTest: (test: TestResponse) => void;
+  resetTest: () => void;
+  fetchTestById: (id: number) => Promise<void>; // Исправляем тип
 }
 
 export const useFetchStore = create<FetchState>((set) => ({
-  test: null, 
+  test: null,
   setTest: (test: TestResponse) => set({ test }),
-  resetTest: () => set({ test: null }), 
+  resetTest: () => set({ test: null }),
+  fetchTestById: async (id: number) => {
+    try {
+      const response = await apiClient.FetchTestById(id.toString()); // Передаем id как строку
+      set({ test: response });
+    } catch (error) {
+      console.error("Failed to fetch test:", error);
+    }
+  },
 }));

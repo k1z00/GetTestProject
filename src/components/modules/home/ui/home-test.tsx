@@ -15,17 +15,7 @@ const HomeCreateTest: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
-
-  // Используем хук message.useMessage
   const [messageApi, contextHolder] = message.useMessage();
-
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTitle(e.target.value);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSource(e.target.value);
-  };
 
   const handleSubmit = async () => {
     if (!title || !source) {
@@ -36,14 +26,26 @@ const HomeCreateTest: React.FC = () => {
     setError(null);
     try {
       const response = await apiClient.FetchTest(title, source);
-      setTest(response);
-      navigate("/test");
+      setTest(response); 
+      navigate(`/test/${response.id}`); 
       messageApi.success("Тест успешно создан!");
     } catch (error) {
       messageApi.error("Не удалось сгенерировать тест. Попробуйте позже.");
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGetList = () => {
+    navigate("/list"); 
+  };
+
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSource(e.target.value);
   };
 
   return (
@@ -67,9 +69,8 @@ const HomeCreateTest: React.FC = () => {
                 value={source}
                 onChange={handleInputChange}
               />
-              <Button onClick={handleSubmit} disabled={loading}>
-                Создать тест
-              </Button>
+              <Button onClick={handleSubmit}>Создать тест</Button>
+              <Button onClick={handleGetList}>Список тестов</Button>
             </div>
           </div>
         </div>

@@ -51,13 +51,18 @@ const ResultTest: React.FC = () => {
   return (
     <div className="result-container" style={{ padding: "24px" }}>
       <Card
-        title={<Title level={2}>Результаты теста</Title>}
+        title={
+          <Title level={2}>
+            Результаты теста {test?.title || "Без названия"}
+          </Title>
+        }
         className="result-card"
       >
         <div className="result-card-items">
           <Title className="result-card-title" level={3}>
             Вы набрали {correctCount}/{quantityQuestion} баллов
           </Title>
+
           <Button
             className="result-card-button"
             onClick={() => setActive(!active)}
