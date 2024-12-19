@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { apiClient } from "../../../shared/lib/api-client";
+import { apiClient } from "../lib/api-client";
 
 interface Answer {
   value: string;

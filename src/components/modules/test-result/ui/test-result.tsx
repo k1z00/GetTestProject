@@ -1,9 +1,10 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useFetchStore } from "../../../../shared/store/store-test";
-import { useState } from "react";
+import { useTestResultsStore } from "../../../../shared/store/store-result";
+import { useState, useEffect } from "react";
 import "../style/test-result.css";
-import { Card, Typography, List, Button, Divider } from "antd";
+import { Card, Typography, List, Button } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 const { Title } = Typography;
 
@@ -15,6 +16,14 @@ const ResultTest: React.FC = () => {
   const [expandedQuestionIndex, setExpandedQuestionIndex] = useState<
     number | null
   >(null);
+const addResult = useTestResultsStore((state) => state.addResult);
+
+useEffect(() => {
+  if (test?.id) {
+    addResult(test.id, correctCount);
+  }
+}, [test?.id, addResult]);
+
 
   const isCorectQueshion = (questionIndex: number, answerIndex: number) => {
     const question = test?.questions[questionIndex];

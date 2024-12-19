@@ -1,4 +1,5 @@
 import { apiClient } from "../../../../shared/lib/api-client";
+import { useTestResultsStore } from "../../../../shared/store/store-result";
 import { useState, useEffect } from "react";
 import "../style/test-list.css";
 import { Button } from "antd";
@@ -31,6 +32,7 @@ const TestList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+ const testResults = useTestResultsStore((state) => state.results);
 
 
 const fetchTestsList = async (page: number) => {
@@ -60,6 +62,7 @@ try{
 
 
 
+
   if (loading) return <div>Загрузка...</div>;
 
 
@@ -76,6 +79,15 @@ return (
             <div>
               <h3>{test.title}</h3>
               <p>Источник: {test.source}</p>
+              {testResults[test.id!] !== undefined && (
+                <p
+                  style={{
+                    color: testResults[test.id!] < 3 ? "red" : "green", 
+                  }}
+                 >
+                  Набранные баллы : {testResults[test.id!]}
+                </p>
+              )}
             </div>
             <div>
               <Link to={`/test/${test.id}`}>
