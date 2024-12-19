@@ -1,6 +1,6 @@
 import React from "react";
-import { Input, Button, message } from "antd";
-import { useFetchStore } from "../../store/store-test";
+import { Input, Button, message, Spin } from "antd";
+import { useFetchStore } from "../../../../shared/store/store-test";
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
@@ -26,8 +26,8 @@ const HomeCreateTest: React.FC = () => {
     setError(null);
     try {
       const response = await apiClient.FetchTest(title, source);
-      setTest(response); 
-      navigate(`/test/${response.id}`); 
+      setTest(response);
+      navigate(`/test/${response.id}`);
       messageApi.success("Тест успешно создан!");
     } catch (error) {
       messageApi.error("Не удалось сгенерировать тест. Попробуйте позже.");
@@ -37,7 +37,7 @@ const HomeCreateTest: React.FC = () => {
   };
 
   const handleGetList = () => {
-    navigate("/list"); 
+    navigate("/list");
   };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -54,7 +54,12 @@ const HomeCreateTest: React.FC = () => {
       {loading && <Loading />}
       {!loading && (
         <div className="test-items">
-          <h2 className="test-title">Создать тест</h2>
+          <div className="test-item-head">
+            <h2 className="test-title">Создать тест</h2>
+            <Button type="primary" onClick={handleGetList}>
+              Список тестов
+            </Button>
+          </div>
           <div className="test-inputfield">
             <TextArea
               rows={19}
@@ -69,8 +74,9 @@ const HomeCreateTest: React.FC = () => {
                 value={source}
                 onChange={handleInputChange}
               />
-              <Button onClick={handleSubmit}>Создать тест</Button>
-              <Button onClick={handleGetList}>Список тестов</Button>
+              <Button type="primary" onClick={handleSubmit}>
+                Создать тест
+              </Button>
             </div>
           </div>
         </div>

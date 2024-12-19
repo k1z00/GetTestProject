@@ -24,7 +24,7 @@ background-color: rgb(206, 205, 205);
 .page-quesion{
     list-style-type: none;
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 
 }
 
@@ -45,4 +45,9 @@ background-color: rgb(206, 205, 205);
 
 .ant-radio-inner::after {
   display: none !important;
+}
+
+.navigation-buttons{
+    display: flex;
+    justify-content: space-between;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFetchStore } from "../../store/store-test";
+import { useFetchStore } from "../../../../shared/store/store-test";
 import { Button, Radio } from "antd";
 import "../style/page-test.css";
 import { useParams, useNavigate } from "react-router-dom";
@@ -38,11 +38,17 @@ const TestContent: React.FC = () => {
   const handleNextQuestion = () => {
     if (selectedQuestionIndex < test.questions.length - 1) {
       setSelectedQuestionIndex((prev) => prev + 1);
+    }};
+
+
+  const handlePrevQuestion = () => {
+    if (selectedQuestionIndex > 0) {
+      setSelectedQuestionIndex((prev) => prev - 1);
     }
   };
 
   const handleFinish = () => {
-    navigate(`/results/${id}`, {
+    navigate(`/results`, {
       state: { answers: selectedAnswers },
     });
   };
@@ -78,6 +84,13 @@ const TestContent: React.FC = () => {
           </li>
         </ul>
         <div className="navigation-buttons">
+          <Button
+            type="primary"
+            onClick={handlePrevQuestion}
+            disabled={selectedQuestionIndex === 0}
+          >
+            предыдущий
+          </Button>
           <Button
             type="primary"
             onClick={

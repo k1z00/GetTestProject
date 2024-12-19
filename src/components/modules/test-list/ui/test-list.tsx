@@ -31,15 +31,17 @@ const TestList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchTestsList = async (page: number) => {
+
+
+const fetchTestsList = async (page: number) => {
     setLoading(true);
     setError(null);
 
-    try {
+
+
+try{
       const response: any = await apiClient.FetchTestsList(page);
-
       const { data, pagination } = response;
-
       if (data) {
         setTestsList(data);
         setTotalTests(pagination.total);
@@ -49,50 +51,60 @@ const TestList: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+}
+
 
   useEffect(() => {
     fetchTestsList(page);
   }, [page]);
 
+
+
   if (loading) return <div>Загрузка...</div>;
 
-  return (
-    <div className="test-list-contsiner">
-      <div className="test-list-items">
-        <div className="test-list-items-head">
-          <h1 className="test-list-items-title">Список тестов</h1>
-          <p>Всего тестов: {totalTests}</p>
-        </div>
-        <ul className="test-list-items-ul">
-          {testsList?.map((test) => (
-            <li className="test-list-items-li" key={test.id}>
+
+return (
+  <div className="test-list-contsiner">
+    <div className="test-list-items">
+      <div className="test-list-items-head">
+        <h1 className="test-list-items-title">Список тестов</h1>
+        <p>Всего тестов: {totalTests}</p>
+      </div>
+      <ul className="test-list-items-ul">
+        {testsList?.map((test) => (
+          <li className="test-list-items-li" key={test.id}>
+            <div>
               <h3>{test.title}</h3>
               <p>Источник: {test.source}</p>
+            </div>
+            <div>
               <Link to={`/test/${test.id}`}>
-                <Button type="primary">Пройти</Button>
+                <Button className="test-list-items-li-button" type="primary">
+                  Пройти
+                </Button>
               </Link>
-            </li>
-          ))}
-        </ul>
-        <div>
-          <Button
-            onClick={() => setPage((prevPage) => prevPage - 1)}
-            disabled={page === 1}
-          >
-            Предыдущая страница
-          </Button>
-          <Button
-            type="primary"
-            onClick={() => setPage((prevPage) => prevPage + 1)}
-            disabled={testsList.length === 0 || testsList.length < 10}
-          >
-            Следующая страница
-          </Button>
-        </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div>
+        <Button
+          onClick={() => setPage((prevPage) => prevPage - 1)}
+          disabled={page === 1}
+        >
+          Предыдущая страница
+        </Button>
+        <Button
+          type="primary"
+          onClick={() => setPage((prevPage) => prevPage + 1)}
+          disabled={testsList.length === 0 || testsList.length < 10}
+        >
+          Следующая страница
+        </Button>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default TestList;

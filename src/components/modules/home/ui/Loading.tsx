@@ -1,11 +1,15 @@
-import '../style/loading.css'
 
-const Loading: React.FC = () => {
-    return (
-      <div className="spinner-container">
-        <div className="spinner"></div>
-      </div>
-    );
-}
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
+import "../style/loading.css"; // Подключаем файл со стилями
 
-export default Loading
+const App = () => (
+    <Spin
+      className="spin"
+      indicator={
+        <LoadingOutlined style={{ fontSize: 85, color: "white" }} spin />
+      }
+    />
+);
+
+export default App;

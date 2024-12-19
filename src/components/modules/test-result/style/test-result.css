@@ -1,5 +1,5 @@
 .result-container {
-  width: 40%;
+  width: 60%;
   margin: auto;
   margin-top: 200px;
   background-color: rgb(211, 211, 211);
@@ -30,4 +30,33 @@
 
 .strong-queshion{
     margin-right: 30px;
+}
+
+.result-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   padding:30px 0 ;
+}
+
+.result-head-title{
+  margin: 0;
+}
+
+
+.selected-answer {
+  color: red;
+}
+
+.selected-answer.correct {
+  color: green; 
+}
+
+.list-item{
+  margin-bottom: 15px;
+}
+
+.list-items{
+  display: flex;
+  justify-content: space-between;
 }

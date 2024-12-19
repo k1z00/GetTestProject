@@ -1,6 +1,5 @@
 .test-list-contsiner{
     background-color: rgb(206, 205, 205);
-    display: flex;
     width: 50%;
     border-radius: 15px;
     margin:150px auto;
@@ -11,7 +10,13 @@
 }
 
 .test-list-items-li{
-    margin-bottom: 70px;
+    margin-bottom: 40px;
+    padding: 25px;
+    background-color: white; 
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .test-list-items-title{
@@ -20,9 +25,15 @@
 
 .test-list-items-ul{
     list-style-type: none;
+    padding: 0;
     
 }
 
 .test-list-items-head{
  margin-bottom: 50px;
+}
+
+.test-list-items-li-button{
+    width: 100px;
+    height: 40px;
 }
