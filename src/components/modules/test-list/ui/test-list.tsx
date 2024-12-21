@@ -1,6 +1,7 @@
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useTestResultsStore } from "../../../../shared/store/store-result";
 import { useState, useEffect } from "react";
+import HomeButton from "../../Ui/home-button";
 import "../style/test-list.css";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
@@ -70,9 +71,13 @@ return (
   <div className="test-list-contsiner">
     <div className="test-list-items">
       <div className="test-list-items-head">
-        <h1 className="test-list-items-title">Список тестов</h1>
+        <div className="list-items-head-text">
+         <h1 className="test-list-items-title">Список тестов</h1>
         <p>Всего тестов: {totalTests}</p>
+        </div>
+         <HomeButton />
       </div>
+      
       <ul className="test-list-items-ul">
         {testsList?.map((test) => (
           <li className="test-list-items-li" key={test.id}>
@@ -99,7 +104,7 @@ return (
           </li>
         ))}
       </ul>
-      <div>
+      <div className="button-pagination">
         <Button
           onClick={() => setPage((prevPage) => prevPage - 1)}
           disabled={page === 1}

@@ -15,7 +15,7 @@
     background-color: white; 
     border-radius: 15px;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
 }
 
@@ -31,9 +31,14 @@
 
 .test-list-items-head{
  margin-bottom: 50px;
+ display: flex;
 }
 
 .test-list-items-li-button{
     width: 100px;
     height: 40px;
+}
+
+.list-items-head-text{
+    margin-right: 30px;
 }

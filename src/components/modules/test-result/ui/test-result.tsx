@@ -1,5 +1,6 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import HomeButton from '../../Ui/home-button'
 import { useFetchStore } from "../../../../shared/store/store-test";
 import { useTestResultsStore } from "../../../../shared/store/store-result";
 import { useState, useEffect } from "react";
@@ -156,12 +157,4 @@ useEffect(() => {
 
 export default ResultTest;
 
-const HomeButton = () => {
-  return (
-    <Link to="/">
-      <Button type="primary" size="large">
-        На главную
-      </Button>
-    </Link>
-  );
-};
+
