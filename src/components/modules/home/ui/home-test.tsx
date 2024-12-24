@@ -14,7 +14,7 @@ const HomeCreateTest: React.FC = () => {
   const [source, setSource] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const navigate = useNavigate();
+    const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage();
 
   const handleSubmit = async () => {
@@ -36,9 +36,6 @@ const HomeCreateTest: React.FC = () => {
     }
   };
 
-  const handleGetList = () => {
-    navigate("/list");
-  };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
@@ -55,10 +52,7 @@ const HomeCreateTest: React.FC = () => {
       {!loading && (
         <div className="test-items">
           <div className="test-item-head">
-            <h2 className="test-title">Создать тест</h2>
-            <Button type="primary" onClick={handleGetList}>
-              Список тестов
-            </Button>
+            <h2 className="test-title">Создать тест</h2> 
           </div>
           <div className="test-inputfield">
             <TextArea

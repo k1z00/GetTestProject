@@ -1,0 +1,40 @@
+.head-container {
+  height: 80px; 
+  background-color: #1677ff;
+  display: flex; /* Добавлено */
+  justify-content: space-between; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+  padding: 0px 100px; 
+  box-shadow: 0 4px 6px -6px black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; 
+}
+
+.head-items {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 20px; 
+  width: 100%; 
+}
+
+.custom-link {
+  text-decoration: none; 
+  color: white;
+  border: none; 
+  outline: none;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.img-user{
+    width: 30px;
+}
+
+.head-item-info{
+    display: flex;
+    gap: 80px;
+}

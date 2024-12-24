@@ -1,7 +1,6 @@
 import { apiClient } from "../../../../shared/lib/api-client";
 import { useTestResultsStore } from "../../../../shared/store/store-result";
 import { useState, useEffect } from "react";
-import HomeButton from "../../Ui/home-button";
 import "../style/test-list.css";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
@@ -75,7 +74,7 @@ return (
          <h1 className="test-list-items-title">Список тестов</h1>
         <p>Всего тестов: {totalTests}</p>
         </div>
-         <HomeButton />
+         
       </div>
       
       <ul className="test-list-items-ul">

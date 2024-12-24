@@ -32,6 +32,7 @@
 .test-list-items-head{
  margin-bottom: 50px;
  display: flex;
+   justify-content: space-between;
 }
 
 .test-list-items-li-button{
@@ -41,4 +42,5 @@
 
 .list-items-head-text{
     margin-right: 30px;
+  
 }
