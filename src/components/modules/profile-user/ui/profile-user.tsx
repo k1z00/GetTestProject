@@ -4,12 +4,16 @@ import { useAuthStore } from "../../../../shared/store/auth.store";
 import { User } from '../../../../types/models/test'
 import '../style/profile-user.css'
 import { Card, Button } from "antd";
+import { useNavigate } from "react-router-dom";
+
 
 const ProfileUser: React.FC = () => {
+    const navigate = useNavigate()
     const { user: authUser } = useAuthStore();
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const logout = useAuthStore((state) => state.logout)
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -34,6 +38,20 @@ const ProfileUser: React.FC = () => {
         fetchUserData();
     }, [authUser]);
 
+
+    if (!authUser) {
+        return (
+            <div className="profile-container">
+                <Card className="profile-items" title={<h1>Профиль</h1>}>
+                    <p style={{ color: "red" }}>Для просмотра профиля необходимо авторизоваться.</p>
+                    <Button onClick={() => navigate('/login')} type="primary">
+                        Войти
+                    </Button>
+                </Card>
+            </div>
+        );
+    }
+
     if (isLoading) {
         return <p>Загрузка...</p>;
     }
@@ -44,6 +62,11 @@ const ProfileUser: React.FC = () => {
 
     if (!user) {
         return <p>Пользователь не найден.</p>;
+    }
+
+    const hendelLogout = () => {
+        logout()
+        navigate('/')
     }
 
     return (
@@ -60,7 +83,7 @@ const ProfileUser: React.FC = () => {
                     <p><strong>Дата создания </strong> {new Date(user.createdAt).toLocaleDateString()}</p>
                 </div>
                 <div className="Button-exit">
-                    <Button type="primary">Выйти</Button>
+                    <Button onClick={hendelLogout} type="primary">Выйти</Button>
                 </div>
 
             </Card >

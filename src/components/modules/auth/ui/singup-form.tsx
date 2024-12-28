@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
-
 import { useAuthStore } from "../../../../shared/store/auth.store";
 import '../style/login-form.css'
 
@@ -13,11 +12,11 @@ const SignUpForm = () => {
         email: string;
         verificationCode: string;
         password: string;
-        name:string
+        name: string
     }) => {
         try {
             const { email, verificationCode, password, name } = values;
-            await signUp( email, verificationCode, password, name);
+            await signUp(email, verificationCode, password, name);
             message.success("Registration successful!");
         } catch (err) {
             message.error("Registration failed. Please try again.");
@@ -62,10 +61,14 @@ const SignUpForm = () => {
                     <Input.Password placeholder="Введите пароль" />
                 </Form.Item>
                 <Form.Item>
-                    <div >
-                        <Button onClick={() => navigate('/login')}  type="primary" htmlType="submit" loading={isLoading} block>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                        <Button onClick={() => navigate('/login')} type="primary" htmlType="submit" loading={isLoading} block>
                             Зарегестрироваться
                         </Button>
+                        <Button onClick={() => navigate('/login')} type="primary" >
+                            Вернуться
+                        </Button>
+
                     </div>
 
                 </Form.Item>

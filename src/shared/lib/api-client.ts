@@ -68,7 +68,7 @@ const FetchAuthUser = async (token: string) => {
   const response = await fetch("http://localhost:8000/api/v1/auth", {
     method: "GET",
     headers: {
-      "x-authorizaition": token, 
+      "x-authorizaition": `Bearer ${token}`, 
     },
   });
 
