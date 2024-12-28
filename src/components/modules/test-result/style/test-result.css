@@ -60,3 +60,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.correct-answer{
+  color: green;
+}

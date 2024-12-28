@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, message } from "antd";
 import { useAuthStore } from "../../../../shared/store/auth.store";
 import "../style/login-form.css";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const LoginForm: React.FC = () => {
   const { login, isLoading, error } = useAuthStore();
   const [form] = Form.useForm();
+  const navigate = useNavigate()
+
+
 
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
       const { email, password } = values;
-      login(email, password);
+      await login(email, password);
       message.success("Вы успешно вошли в систему!");
     } catch (err) {
       message.error("Ошибка авторизации. Попробуйте снова.");
@@ -41,12 +48,18 @@ const LoginForm: React.FC = () => {
           <Input.Password placeholder="Введите пароль" />
         </Form.Item>
 
-        {error && <div className="error-message">{error}</div>}
+
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={isLoading} block>
-            Войти
-          </Button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Button type="primary" htmlType="submit" loading={isLoading} block>
+              Войти
+            </Button>
+            <Button onClick={() => navigate('/singup')} type="primary" >
+              Регистрация
+            </Button>
+          </div>
+
         </Form.Item>
       </Form>
     </div>

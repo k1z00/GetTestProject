@@ -1,0 +1,29 @@
+.profile-container{
+    width: 30%;
+    margin: auto;
+    margin-top: 300px;
+    height: 500px;
+   
+    border-radius: 25px;
+    padding: 30px;
+}
+
+ 
+ .profile-items h1 {
+    
+    text-align: center;
+ }
+
+  .profile-items p{
+    font-size: larger;
+
+ }
+
+ .Button-exit{
+    justify-content: end;
+    display: flex;
+ }
+
+ .profile-items-info{
+    margin-bottom: 50px;
+ }

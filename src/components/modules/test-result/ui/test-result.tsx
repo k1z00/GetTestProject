@@ -117,6 +117,7 @@ useEffect(() => {
                         }`}
                       >
                         Выбран ответ {answerIndex + 1}
+                        
                       </span>
                     </div>
                     <div>
@@ -133,13 +134,18 @@ useEffect(() => {
                   </div>
                   {isExpanded && (
                     <div>
-                      <strong style={{marginRight: '10px'}}>Выбранный вариант</strong>
+                      <span style={{ marginRight: '10px', fontWeight: "600" }}>Выбранный вариант:</span>
                       <span
                         className={`selected-answer ${
                           isCorrect ? "correct" : ""
                         }`}
                       >
                         {selectedAnswerText}
+                      </span>
+                      <br />
+                      <span style={{ marginRight: "10px", fontWeight: "600" }}>Правильный ответ:</span>
+                      <span className="correct-answer">
+                        {test?.questions[index].answers.find((a) => a.isCorrect)?.value}
                       </span>
                     </div>
                   )}
