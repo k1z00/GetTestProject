@@ -71,16 +71,15 @@ useEffect(() => {
       isCorrect,
       isExpanded,
     };
-  };
-
+  }
   return (
-    <div className="result-container" style={{ padding: "24px" }}>
+    <div className="test-list-container" style={{ padding: "24px" }}>
       <Card
         className="result-card"
         title={
           <div className="result-head">
             <Title level={2} className="result-head-title">
-              Результаты теста {test?.title || "Без названия"}
+              Результаты теста: "{test?.title || "Без названия"}"
             </Title>
           </div>
         }

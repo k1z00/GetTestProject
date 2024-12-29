@@ -18,11 +18,15 @@ interface TestResponse {
   counts: number;
 }
 
-interface PaginatedTestsResponse {
-  tests: TestResponse[];
+interface Pagination {
   total: number;
   page: number;
   pageSize: number;
+}
+
+interface PaginatedTestsResponse {
+  data: TestResponse[];
+  pagination: Pagination;
 }
 
 interface User {
@@ -44,4 +48,4 @@ interface SignInRequest {
 
 
 
-export type { PaginatedTestsResponse, TestResponse, AuthResponse, SignInRequest, User } 
+export type { PaginatedTestsResponse, TestResponse, AuthResponse, SignInRequest, User, Question, Answer } 

@@ -1,46 +1,98 @@
-.test-list-contsiner{
-    background-color: rgb(206, 205, 205);
-    width: 50%;
-    border-radius: 15px;
-    margin:150px auto;
+.test-list-container {
+  padding: 24px;
+
+  min-height: 100vh;
 }
 
-.test-list-items{
-    padding: 60px;
+.test-list-items {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
 }
 
-.test-list-items-li{
-    margin-bottom: 40px;
-    padding: 25px;
-    background-color: white; 
-    border-radius: 15px;
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
+.test-list-items-head {
+  margin-bottom: 24px;
+  text-align: center;
 }
 
-.test-list-items-title{
-   margin: 0px;
+.test-list-items-head h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
 }
 
-.test-list-items-ul{
-    list-style-type: none;
-    padding: 0;
-    
+.test-list-items-head p {
+  font-size: 16px;
+  color: #666;
 }
 
-.test-list-items-head{
- margin-bottom: 50px;
- display: flex;
-   justify-content: space-between;
+.test-list-items-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.test-list-items-li-button{
-    width: 100px;
-    height: 40px;
+.test-list-items-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e8e8e8;
+  transition: background-color 0.3s ease;
 }
 
-.list-items-head-text{
-    margin-right: 30px;
-  
+.test-list-items-li:hover {
+  background-color: #f9f9f9;
+}
+
+.test-list-items-li h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.test-list-items-li p {
+  font-size: 14px;
+  color: #666;
+  margin: 4px 0 0;
+}
+
+.test-list-items-li-button {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  font-weight: 500;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.test-list-items-li-button:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.button-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.button-pagination button {
+  font-weight: 500;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-pagination button:disabled {
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.button-pagination button:not(:disabled):hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
 }

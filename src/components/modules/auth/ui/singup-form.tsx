@@ -18,7 +18,7 @@ const SignUpForm = () => {
             const { email, verificationCode, password, name } = values;
             await signUp(email, verificationCode, password, name);
             message.success("Registration successful!");
-        } catch (err) {
+        } catch  {
             message.error("Registration failed. Please try again.");
         }
     };

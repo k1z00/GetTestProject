@@ -13,7 +13,7 @@ const HomeCreateTest: React.FC = () => {
   const [title, setTitle] = React.useState("");
   const [source, setSource] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+ 
     const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -23,18 +23,24 @@ const HomeCreateTest: React.FC = () => {
       return;
     }
     setLoading(true);
-    setError(null);
     try {
       const response = await apiClient.FetchTest(title, source);
       setTest(response);
       navigate(`/test/${response.id}`);
       messageApi.success("Тест успешно создан!");
     } catch (error) {
-      messageApi.error("Не удалось сгенерировать тест. Попробуйте позже.");
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error("Произошла неизвестная ошибка:", error);
+      }
     } finally {
       setLoading(false);
     }
   };
+
+
+
 
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

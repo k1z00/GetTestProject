@@ -28,7 +28,7 @@ const ProfileUser: React.FC = () => {
             try {
                 const userData = await apiClient.getUserById(authUser.id.toString());
                 setUser(userData);
-            } catch (err) {
+            } catch  {
                 setError("Ошибка при загрузке данных пользователя.");
             } finally {
                 setIsLoading(false);
@@ -43,7 +43,7 @@ const ProfileUser: React.FC = () => {
         return (
             <div className="profile-container">
                 <Card className="profile-items" title={<h1>Профиль</h1>}>
-                    <p style={{ color: "red" }}>Для просмотра профиля необходимо авторизоваться.</p>
+                    <p >Для просмотра профиля необходимо авторизоваться.</p>
                     <Button onClick={() => navigate('/login')} type="primary">
                         Войти
                     </Button>

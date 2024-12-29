@@ -1,66 +1,107 @@
-.result-container {
-  width: 60%;
-  margin: auto;
-  margin-top: 400px;
-  background-color: rgb(211, 211, 211);
-  border-radius: 15px;
+.test-list-container {
+  padding: 24px;
+  margin-top: 200px;
+  min-height: 100vh;
+ 
 }
 
 .result-card {
-  background-color: rgb(206, 205, 205);
-  color: white;
-  background-color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
 }
 
-.result-card-title {
-  color: white;
-  margin: 0;
+.result-head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.result-head-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
 }
 
 .result-card-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  margin-bottom: 24px;
+}
+
+.result-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
 }
 
 .result-card-button {
-  margin-bottom: 12px;
+  font-weight: 500;
 }
 
-.strong-queshion{
-    margin-right: 30px;
-}
-
-.result-head{
+.list-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   padding:30px 0 ;
+  margin-bottom: 16px;
 }
 
-.result-head-title{
-  margin: 0;
+.list-item {
+  display: flex;
+  flex-direction: column;
 }
 
+.strong-queshion {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
 
 .selected-answer {
-  color: red;
+  font-size: 14px;
+  color: #a12e2e;
 }
 
 .selected-answer.correct {
-  color: green; 
+  color: #52c41a;
 }
 
-.list-item{
-  margin-bottom: 15px;
+.correct-answer {
+  color: #52c41a;
+  font-weight: 500;
 }
 
-.list-items{
+.expanded-content {
+  margin-top: 12px;
+}
+
+.answer-label {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.button-pagination {
   display: flex;
   justify-content: space-between;
+  margin-top: 24px;
 }
 
-.correct-answer{
-  color: green;
+.button-pagination button {
+  font-weight: 500;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-pagination button:disabled {
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.button-pagination button:not(:disabled):hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
 }

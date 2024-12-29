@@ -1,5 +1,5 @@
 import { ofetch } from "ofetch";
-import { PaginatedTestsResponse, TestResponse, AuthResponse, SignInRequest, User } from "../../types/models/test";
+import { PaginatedTestsResponse, TestResponse,  User } from "../../types/models/test";
 
 async function FetchTest(
   title?: string,

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Input, Button, message } from "antd";
 import { useAuthStore } from "../../../../shared/store/auth.store";
 import "../style/login-form.css";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const LoginForm: React.FC = () => {
-  const { login, isLoading, error } = useAuthStore();
+  const { login, isLoading} = useAuthStore();
   const [form] = Form.useForm();
   const navigate = useNavigate()
 
@@ -21,9 +21,12 @@ const LoginForm: React.FC = () => {
       await login(email, password);
       message.success("Вы успешно вошли в систему!");
     } catch (err) {
-      message.error("Ошибка авторизации. Попробуйте снова.");
-    }
-  };
+      if (err instanceof Error) {
+        console.error("An error occurred:", err.message);
+      } else {
+        console.error("An unknown error occurred:", err);
+      }
+  } }; 
 
   return (
     <div className="login-form-container">

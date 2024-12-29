@@ -1,53 +1,58 @@
-.page-test-container{
-    margin: auto;
-     width: 60%;
-    background-color:  #3E5F8A;
-   
+.page-test-container {
+  padding: 24px;
+  margin-top: 250px;
+  min-height: 100vh;
 }
 
-.page-test-title{
-    margin-bottom: 30px;
+.page-test-items {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
 }
 
-.page-test-items{
- padding: 100px 150px ;
- border-radius: 25px;
- margin-top: 200px;
-background-color: rgb(206, 205, 205);
+.page-test-title {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-.page-ques-ul{
-    padding: 0;
+.page-question-card {
+  margin-bottom: 24px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
 }
 
-
-.page-quesion{
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 25px;
-
+.page-ques-title {
+  margin-bottom: 16px;
 }
 
-.page-quesion ul{
-    list-style-type: none;
+.page-ques-ul {
+  width: 100%;
 }
 
-
-
-.page-ques-title{
-    margin-bottom: 50px;
+.ques-option-card {
+  cursor: pointer;
+  margin-bottom: 8px;
+  padding: 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.ques-options{
-    display: flex;
-    justify-content: space-between;
+.ques-option-card:hover {
+  background-color: #f9f9f9;
+  border-color: #1890ff;
 }
 
-.ant-radio-inner::after {
-  display: none !important;
+.ques-option-card.selected {
+  background-color: #e6f7ff;
+  border-color: #1890ff;
 }
 
-.navigation-buttons{
-    display: flex;
-    justify-content: space-between;
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
 }

@@ -5,7 +5,7 @@ import { useAuthStore } from "../../shared/store/auth.store";
 
 const LoginPage:React.FC = () => {
     const navigate = useNavigate();
-  const { user, login } = useAuthStore();
+  const { user } = useAuthStore();
 
 
   useEffect(() => {
