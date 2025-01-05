@@ -1,13 +1,12 @@
 .test-list-container {
   padding: 24px;
-
   min-height: 100vh;
 }
 
 .test-list-items {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: var(--card-background);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 24px;
@@ -16,18 +15,21 @@
 .test-list-items-head {
   margin-bottom: 24px;
   text-align: center;
+  
 }
 
 .test-list-items-head h1 {
   font-size: 28px;
   font-weight: 600;
-  color: #333;
   margin-bottom: 8px;
+  color: var(--card-text);;
 }
+
 
 .test-list-items-head p {
   font-size: 16px;
-  color: #666;
+  color: var(--card-text);
+ 
 }
 
 .test-list-items-ul {
@@ -45,54 +47,100 @@
   transition: background-color 0.3s ease;
 }
 
-.test-list-items-li:hover {
-  background-color: #f9f9f9;
-}
+
 
 .test-list-items-li h3 {
   font-size: 18px;
   font-weight: 500;
-  color: #333;
+  color: var(--card-text);
   margin: 0;
 }
 
 .test-list-items-li p {
   font-size: 14px;
-  color: #666;
+  color: var(--card-text);
   margin: 4px 0 0;
 }
 
 .test-list-items-li-button {
-  background-color: #1890ff;
-  border-color: #1890ff;
+  background-color: var(--button-color);
+  border-color: var(--button-color);
+  color: var(--text-color-list);
   font-weight: 500;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.test-list-items-li-button:hover {
-  background-color: #40a9ff;
-  border-color: #40a9ff;
+.test-list-items-li-button.ant-btn:hover {
+  background-color: var(--button-color-hover) !important;
+  border-color: none !important;
 }
 
 .button-pagination {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+  color: var(--button-color-text);
+}
+
+.button-container{
+  display: flex;
+  justify-content: end;
 }
 
 .button-pagination button {
   font-weight: 500;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  background-color: var(--button-color);
+  color: var(--button-color-text);
+  border: none;
 }
 
 .button-pagination button:disabled {
-  background-color: #f5f5f5;
-  border-color: #d9d9d9;
-  color: #bfbfbf;
+  background-color: var(--button-disabled-bg);
+  border: 1px solid var(--border-color);
+  color: var(--button-disabled-text);
   cursor: not-allowed;
 }
 
 .button-pagination button:not(:disabled):hover {
-  background-color: #40a9ff;
-  border-color: #40a9ff;
+  background-color: var(--button-hover-color);
+  border-color: var(--button-hover-color);
+}
+
+
+
+
+
+
+:where(.css-dev-only-do-not-override-1kf000u).ant-list-split .ant-list-item {
+    border-block-end: 1px solid var(--border-color-list);
+}
+
+.button-pagination-btn{
+  background-color: var(--button-color);
+}
+
+.profile-items h1 {
+ text-align: center;
+  color: var(--card-text);
+  font-size: 23px;
+
+}
+.profile-paragraph {
+font-size: 16px;
+  margin-bottom: 25px;
+
+  color: var(--card-text);
+}
+
+.sing-profile{
+   background-color: var(--button-color);
+  color: var(--button-color-text);
+  border: none;
+}
+
+.sing-profile.ant-btn:hover {
+  background-color: var(--button-color-hover) !important;
+  color: var(--button-color-text) !important;
+  border: none !important;
 }

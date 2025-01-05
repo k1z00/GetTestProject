@@ -1,9 +1,6 @@
 import{ create }from "zustand";
 
-interface TestResult {
-  testId: number;
-  score: number;
-}
+
 
 interface TestResultsState {
   results: Record<number, number>; // { testId: score }

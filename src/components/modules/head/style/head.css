@@ -1,10 +1,10 @@
 .head-container {
   height: 80px; 
-  background-color: #1677ff;
-  display: flex; /* Добавлено */
-  justify-content: space-between; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
-  padding: 0px 100px; 
+  background-color: var(--head-color) ;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0px 35px; 
   box-shadow: 0 4px 6px -6px black;
   position: fixed;
   top: 0;
@@ -17,13 +17,12 @@
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  gap: 20px; 
   width: 100%; 
 }
 
 .custom-link {
   text-decoration: none; 
-  color: white;
+  color: var(--text-color-head);
   border: none; 
   outline: none;
   font-weight: 600;
@@ -37,4 +36,16 @@
 .head-item-info{
     display: flex;
     gap: 80px;
+}
+
+
+
+
+
+
+
+.head-item-right{
+  display: flex;
+  gap: 25px;
+  align-items: center;
 }

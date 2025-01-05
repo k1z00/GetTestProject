@@ -41,11 +41,13 @@ const TestList: React.FC = () => {
   if (!authUser) {
     return (
       <div className="profile-container">
-        <Card className="profile-items" title={<Title level={1}>Список тестов</Title>}>
-          <Paragraph>Для доступа к списку тестов необходимо быть авторизованным</Paragraph>
-          <Button onClick={() => navigate('/login')} type="primary">
-            Войти
-          </Button>
+        <Card className="profile-items" title={<h1>Список тестов</h1>}>
+          <Paragraph className="profile-paragraph">Для доступа к списку тестов необходимо быть авторизованным</Paragraph>
+          <div className="button-container">
+            <Button onClick={() => navigate('/login')} className="sing-profile">
+              Войти
+            </Button>
+          </div>
         </Card>
       </div>
     );
@@ -59,7 +61,7 @@ const TestList: React.FC = () => {
         <div className="test-list-items-head">
           <div className="list-items-head-text">
             <Title level={1} className="test-list-items-title">Список тестов</Title>
-            <Paragraph>Всего тестов: {totalTests}</Paragraph>
+            <Paragraph><p>Всего тестов: {totalTests}</p></Paragraph>
           </div>
         </div>
 
@@ -68,9 +70,9 @@ const TestList: React.FC = () => {
           dataSource={testsList}
           renderItem={(test) => (
             <List.Item className="test-list-items-li" key={test.id}>
-              <div>
+              <div className="text-info">
                 <Title level={3}>{test.title}</Title>
-                <Paragraph>Источник: {test.source}</Paragraph>
+                <Paragraph><p>Источник: {test.source}</p></Paragraph>
               </div>
               <div>
                 <Link to={`/test/${test.id}`}>
@@ -85,13 +87,14 @@ const TestList: React.FC = () => {
 
         <div className="button-pagination">
           <Button
+            className="button-pagination-btn"
             onClick={() => setPage((prevPage) => prevPage - 1)}
             disabled={page === 1}
           >
             Предыдущая страница
           </Button>
           <Button
-            type="primary"
+            className="button-pagination-btn"
             onClick={() => setPage((prevPage) => prevPage + 1)}
             disabled={testsList.length === 0 || testsList.length < 10}
           >

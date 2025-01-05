@@ -31,7 +31,7 @@ const LoginForm: React.FC = () => {
   return (
     <div className="login-form-container">
       <h2 className="login-form-title">Авторизация</h2>
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Form form={form} className="form" layout="vertical" onFinish={handleSubmit}>
         <Form.Item
           label="Email"
           name="email"
@@ -54,11 +54,11 @@ const LoginForm: React.FC = () => {
 
 
         <Form.Item>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <Button type="primary" htmlType="submit" loading={isLoading} block>
+          <div className="container-button" style={{ display: 'flex', gap: '10px' }}>
+            <Button htmlType="submit" loading={isLoading} block>
               Войти
             </Button>
-            <Button onClick={() => navigate('/singup')} type="primary" >
+            <Button onClick={() => navigate('/singup')}  >
               Регистрация
             </Button>
           </div>

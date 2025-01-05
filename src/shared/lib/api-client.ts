@@ -1,22 +1,24 @@
-import { ofetch } from "ofetch";
-import { PaginatedTestsResponse, TestResponse,  User } from "../../types/models/test";
+
+import { PaginatedTestsResponse, TestResponse, User } from "../../types/models/test";
+import customFetch from  './custom-fetch'
+
+
+
+
 
 async function FetchTest(
   title?: string,
   source?: string
 ): Promise<TestResponse> {
   try {
-    const response = await ofetch<TestResponse>(
-      "http://localhost:8000/api/v1/llvm/generate-test",
-      {
-        method: "POST",
-        body: {
-          title: title || "Default Title",
-          source: source || "Default Source",
-          counts: 5,
-        },
-      }
-    );
+    const response = await customFetch<TestResponse>("/api/v1/llvm/generate-test", {
+      method: "POST",
+      body: {
+        title: title || "Default Title",
+        source: source || "Default Source",
+        counts: 5,
+      },
+    });
 
     return response;
   } catch (error) {
@@ -28,12 +30,9 @@ async function FetchTest(
 
 async function FetchTestById(id: string): Promise<TestResponse> {
   try {
-    const response = await ofetch<TestResponse>(
-      `http://localhost:8000/api/v1/test/${id}`,
-      {
-        method: "GET",
-      }
-    );
+    const response = await customFetch<TestResponse>(`/api/v1/test/${id}`, {
+      method: "GET",
+    });
 
     return response;
   } catch (error) {
@@ -47,8 +46,8 @@ async function FetchTestsList(
   page: number = 1
 ): Promise<PaginatedTestsResponse> {
   try {
-    const response = await ofetch<PaginatedTestsResponse>(
-      `http://localhost:8000/api/v1/test/list?page=${page}&limit=10`,
+    const response = await customFetch<PaginatedTestsResponse>(
+      `/api/v1/test/list?page=${page}&limit=10`,
       {
         method: "GET",
       }
@@ -62,79 +61,61 @@ async function FetchTestsList(
   }
 }
 
+const FetchAuthUser = async () => {
+  try {
+    const response = await customFetch("/api/v1/auth", {
+      method: "GET",
+    });
 
-
-const FetchAuthUser = async (token: string) => {
-  const response = await fetch("http://localhost:8000/api/v1/auth", {
-    method: "GET",
-    headers: {
-      "x-authorizaition": `Bearer ${token}`, 
-    },
-  });
-
-  console.log('sd', token)
-  if (!response.ok) {
-    throw new Error(`Failed to fetch auth user: ${response.statusText}`);
+    return response;
+  } catch (error) {
+    console.error("Failed to fetch auth user:", error);
+    throw new Error(`Failed to fetch auth user: ${error}`);
   }
-
-  return response.json();
 };
-
 
 async function SignInUser(email: string, password: string) {
   try {
-    const response = await fetch('http://localhost:8000/api/v1/auth/sign-in', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
+    const response = await customFetch("/api/v1/auth/sign-in", {
+      method: "POST",
+      body: { email, password },
     });
 
-    if (!response.ok) {
-      throw new Error(`Failed to sign in: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     throw error;
   }
 }
 
+const SignUpUser = async (
+  email: string,
+  verificationCode: string,
+  password: string,
+  name: string
+) => {
+  try {
+    const response = await customFetch("/api/v1/auth/sign-up", {
+      method: "POST",
+      body: {
+        email,
+        email_verification_code: verificationCode,
+        password,
+        name,
+      },
+    });
 
-const SignUpUser = async (email: string, verificationCode: string, password: string, name: string) => {
-  const response = await fetch("http://localhost:8000/api/v1/auth/sign-up", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      email_verification_code: verificationCode,
-      password,
-      name
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to sign up: ${response.statusText}`);
+    return response;
+  } catch (error) {
+    console.error("Failed to sign up:", error);
+    throw new Error(`Failed to sign up: ${error}`);
   }
-
-  return response.json(); 
 };
 
-
-
-
-const getUserById = async (id: string): Promise<User> => {
+const GetUserById = async (id: string): Promise<User> => {
   try {
-    const response = await ofetch(`http://localhost:8000/api/v1/user/${id}`, {
+    const response = await customFetch<User>(`/api/v1/user/${id}`, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${id} `,
-      },
     });
 
     return response;
@@ -144,22 +125,21 @@ const getUserById = async (id: string): Promise<User> => {
   }
 };
 
-
-
-
-const fetchUserPermissions = async (id: string): Promise<string[]> => {
+const FetchUserPermissions = async (id: string): Promise<string[]> => {
   try {
-    const permissions = await ofetch<string[]>(`http://localhost:8000/api/v1/user/${id}/permisson`, {
-      method: 'GET',
-    });
-    console.log('Права пользователя:', permissions);
+    const permissions = await customFetch<string[]>(
+      `/api/v1/user/${id}/permisson`,
+      {
+        method: "GET",
+      }
+    );
+
     return permissions;
   } catch (error) {
-    console.error('Ошибка при получении прав пользователя:', error);
+    console.error("Ошибка при получении прав пользователя:", error);
     throw error;
   }
 };
-
 
 export const apiClient = {
   FetchTest,
@@ -167,7 +147,7 @@ export const apiClient = {
   FetchTestsList,
   SignInUser,
   FetchAuthUser,
-  getUserById,
-  fetchUserPermissions,
-  SignUpUser
+  GetUserById,
+  FetchUserPermissions,
+  SignUpUser,
 };

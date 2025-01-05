@@ -40,7 +40,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         updatedAt: response.user.updatedAt,
       };
 
-      const premisson = await apiClient.fetchUserPermissions(user.id.toString());
+      const premisson = await apiClient.FetchUserPermissions(user.id.toString());
       localStorage.setItem("token", response.token);
       console.log("Токен сохранен:", response.token);
 
@@ -70,7 +70,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ isLoading: true, error: null });
 
       try {
-        const { token: newToken, user } = await apiClient.FetchAuthUser(token);
+        const { token: newToken, user } = await apiClient.FetchAuthUser();
         localStorage.setItem("token", newToken); // Обновляем токен
 
         set({

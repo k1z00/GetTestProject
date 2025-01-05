@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from 'react-router-dom';
+import ThemeToggle from "../../theme/ui/theme";
 import '../style/head.css'
 
 
@@ -14,12 +15,16 @@ const Head: React.FC = () => {
                     <Link to="/list" className="custom-link">
                         Список тестов
                     </Link>
-            </div> 
-                <Link to="/profile" className="custom-link">
-                    <img className="img-user" src="/img/user.png" alt="" />
-                </Link>
+                </div>
+                <div className="head-item-right" >
+                    <Link to="/profile" className="custom-link">
+                        <img className="img-user" src="/img/user.png" alt="" />
+                    </Link>
+                    <ThemeToggle />
+                </div>
+
             </div>
-            
+
 
         </div>
     )

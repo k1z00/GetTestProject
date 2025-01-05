@@ -13,6 +13,12 @@ const HomeCreateTest: React.FC = () => {
   const [title, setTitle] = React.useState("");
   const [source, setSource] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+
+
+
+
+
+
  
     const navigate = useNavigate()
   const [messageApi, contextHolder] = message.useMessage();
@@ -74,7 +80,7 @@ const HomeCreateTest: React.FC = () => {
                 value={source}
                 onChange={handleInputChange}
               />
-              <Button type="primary" onClick={handleSubmit}>
+              <Button className="button-home" onClick={handleSubmit}>
                 Создать тест
               </Button>
             </div>

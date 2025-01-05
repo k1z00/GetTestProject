@@ -60,11 +60,11 @@ const TestContent: React.FC = () => {
     <div className="page-test-container">
       <Card className="page-test-items">
         <Title level={2} className="page-test-title">
-          Вопрос {selectedQuestionIndex + 1}
+          <p>Вопрос {selectedQuestionIndex + 1}</p>
         </Title>
         <Card className="page-question-card">
           <Title level={4} className="page-ques-title">
-            {currentQuestion.text}
+            <p>{currentQuestion.text}</p>
           </Title>
           <Space direction="vertical" className="page-ques-ul">
             {currentQuestion.answers.map((answer, answerIndex) => (
@@ -83,7 +83,7 @@ const TestContent: React.FC = () => {
                   }
                   onChange={() => handleRadioChange(answerIndex)}
                 >
-                  <Text>{answer.value}</Text>
+                  <Text ><p>{answer.value}</p></Text>
                 </Radio>
               </Card>
             ))}
@@ -91,14 +91,15 @@ const TestContent: React.FC = () => {
         </Card>
         <div className="navigation-buttons">
           <Button
-            type="primary"
             onClick={handlePrevQuestion}
             disabled={selectedQuestionIndex === 0}
+            className="navigation-buttons-button"
           >
             Предыдущий
           </Button>
           <Button
-            type="primary"
+           
+            className="navigation-buttons-button"
             onClick={
               selectedQuestionIndex < test.questions.length - 1
                 ? handleNextQuestion

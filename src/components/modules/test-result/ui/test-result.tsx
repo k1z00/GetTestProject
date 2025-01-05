@@ -16,6 +16,7 @@ const ResultTest: React.FC = () => {
   const [expandedQuestionIndex, setExpandedQuestionIndex] = useState<
     number | null
   >(null);
+  
 const addResult = useTestResultsStore((state) => state.addResult);
 
 useEffect(() => {
@@ -79,20 +80,20 @@ useEffect(() => {
         title={
           <div className="result-head">
             <Title level={2} className="result-head-title">
-              Результаты теста: "{test?.title || "Без названия"}"
+              <p> Результаты теста: "{test?.title || "Без названия"}"</p>
             </Title>
           </div>
         }
       >
         <div className="result-card-items">
           <Title className="result-card-title" level={3}>
-            Вы набрали {correctCount}/{quantityQuestion} баллов
+            <p>Вы набрали {correctCount}/{quantityQuestion} баллов</p>
           </Title>
 
           <Button
             className="result-card-button"
             onClick={() => setActive(!active)}
-            type="primary"
+           
           >
             {active ? "Скрыть" : "Подробнее"}
           </Button>
@@ -121,7 +122,7 @@ useEffect(() => {
                     </div>
                     <div>
                       <Button
-                        type="text"
+                        className="button-li-result"
                         icon={isExpanded ? <UpOutlined /> : <DownOutlined />}
                         onClick={() =>
                           setExpandedQuestionIndex(isExpanded ? null : index)
@@ -132,7 +133,7 @@ useEffect(() => {
                     </div>
                   </div>
                   {isExpanded && (
-                    <div>
+                    <div className="li-info">
                       <span style={{ marginRight: '10px', fontWeight: "600" }}>Выбранный вариант:</span>
                       <span
                         className={`selected-answer ${

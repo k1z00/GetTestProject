@@ -2,53 +2,67 @@
   padding: 24px;
   margin-top: 250px;
   min-height: 100vh;
+  color: white !important;
+  
 }
 
 .page-test-items {
-  max-width: 800px;
+  max-width: 1300px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: var(--card-background);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 24px;
+
+  
 }
 
-.page-test-title {
+.page-test-title p {
   text-align: center;
   margin-bottom: 24px;
+  color: var(--card-text);
 }
 
 .page-question-card {
   margin-bottom: 24px;
-  border: 1px solid #e8e8e8;
   border-radius: 8px;
+   
 }
 
-.page-ques-title {
+.page-ques-title p {
   margin-bottom: 16px;
+  color: var(--card-text);
 }
 
 .page-ques-ul {
-  width: 100%;
+width: 100%;
+ border: none;
+ 
+}
+.page-ques-ul p {
+ color: var(--card-text)
+ 
 }
 
 .ques-option-card {
   cursor: pointer;
   margin-bottom: 8px;
   padding: 12px;
-  border: 1px solid #e8e8e8;
+  border: none;
   border-radius: 4px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  
 }
 
 .ques-option-card:hover {
-  background-color: #f9f9f9;
-  border-color: #1890ff;
+  background-color: var(--background-color-queshion-hover);
+  border-color: var(--border-queshion);
+
 }
 
 .ques-option-card.selected {
-  background-color: #e6f7ff;
-  border-color: #1890ff;
+  background-color: var(--background-color-queshion-selected);
+  border-color: var(--border-queshion);
 }
 
 .navigation-buttons {
@@ -56,3 +70,40 @@
   justify-content: space-between;
   margin-top: 24px;
 }
+.navigation-buttons-button{
+  background-color: var(--button-color);
+  color: var(--button-color-text);
+  border: none;
+}
+
+
+.navigation-buttons-button.ant-btn:hover {
+  background-color: var(--button-color-hover) !important;
+  color: var(--button-color-text) !important;
+  border: none !important;
+}
+
+.navigation-buttons-button:disabled {
+  background-color: var(--button-disabled-bg);
+  border: solid 1px var(--border-color);
+}
+
+.navigation-buttons-button:disabled:hover {
+  background-color: var(--button-disabled-bg) !important;
+  color: var(--button-disabled-text) !important;
+  border: solid 1px var(--border-color) !important; 
+
+}
+
+
+ 
+
+
+.ant-card {
+  background-color: var(--card-background);
+  color: var(--card-text); 
+  border: none;
+}
+
+
+

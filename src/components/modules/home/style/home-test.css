@@ -10,7 +10,7 @@
 
 .test-title {
   text-align: center;
-  color: white;
+  color: var(--text-color-home);
   margin-right: 30px;
 }
 
@@ -39,5 +39,18 @@
 .test-item-head {
   display: flex;
   align-items: center;
-  
+}
+
+.button-home{
+   background-color: var(--button-color);
+    border-color: var(--button-color);
+    color: var(--button-color-text);
+    border: none
+}
+
+
+.button-home.ant-btn:hover {
+  background-color: var(--button-color-hover) !important;
+  color: var(--button-color-text) !important;
+  border: none !important;
 }
