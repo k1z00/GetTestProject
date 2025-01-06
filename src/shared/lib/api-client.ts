@@ -28,6 +28,34 @@ async function FetchTest(
   }
 }
 
+
+async function FetchGuesTest(
+  title?: string,
+  source?: string
+): Promise<TestResponse> {
+  try {
+    const response = await customFetch<TestResponse>("/api/v1/llvm/guest-generate-test", {
+      method: "POST",
+      body: {
+        title: title || "Default Title",
+        source: source || "Default Source",
+        counts: 5,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    const typedError = error as Error;
+    console.error("Failed to generate test:", typedError.message);
+    throw new Error(`Failed to generate test: ${typedError.message}`);
+  }
+}
+
+
+
+
+
+
 async function FetchTestById(id: string): Promise<TestResponse> {
   try {
     const response = await customFetch<TestResponse>(`/api/v1/test/${id}`, {
@@ -97,12 +125,15 @@ const SignUpUser = async (
   try {
     const response = await customFetch("/api/v1/auth/sign-up", {
       method: "POST",
-      body: {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
         email,
         email_verification_code: verificationCode,
         password,
-        name,
-      },
+      }),
     });
 
     return response;
@@ -125,6 +156,32 @@ const GetUserById = async (id: string): Promise<User> => {
   }
 };
 
+
+
+
+async function FetchTestsUserList(
+  page: number = 1
+): Promise<PaginatedTestsResponse> {
+  try {
+    const response = await customFetch<PaginatedTestsResponse>(
+      `/api/v1/test/my-list?page=${page}&limit=10`,
+      {
+        method: "GET",
+      }
+    );
+
+    return response;
+  } catch (error) {
+    const typedError = error as Error;
+    console.error("Failed to fetch tests list:", typedError.message);
+    throw new Error(`Failed to fetch tests list: ${typedError.message}`);
+  }
+}
+
+
+
+
+
 const FetchUserPermissions = async (id: string): Promise<string[]> => {
   try {
     const permissions = await customFetch<string[]>(
@@ -143,6 +200,7 @@ const FetchUserPermissions = async (id: string): Promise<string[]> => {
 
 export const apiClient = {
   FetchTest,
+  FetchGuesTest,
   FetchTestById,
   FetchTestsList,
   SignInUser,
@@ -150,4 +208,6 @@ export const apiClient = {
   GetUserById,
   FetchUserPermissions,
   SignUpUser,
+  FetchTestsUserList
+ 
 };

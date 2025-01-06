@@ -1,25 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
-import { useAuthStore } from "../../../../shared/store/auth.store";
-import '../style/login-form.css'
+import { useAuthStore } from "@shared/store/auth.store";
+import { RoutesPaths } from "@shared/lib/router";
+import '../style/login-form.css';
+
+
+
 
 const SignUpForm = () => {
     const [form] = Form.useForm();
     const { signUp, isLoading } = useAuthStore();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const onFinish = async (values: {
         email: string;
         verificationCode: string;
         password: string;
-        name: string
+        name: string;
     }) => {
         try {
             const { email, verificationCode, password, name } = values;
             await signUp(email, verificationCode, password, name);
-            message.success("Registration successful!");
-        } catch  {
-            message.error("Registration failed. Please try again.");
+            navigate(RoutesPaths.login)
+            message.success("Регистрация прошла успешно!"); 
+        } catch (error) {
+            console.error("Ошибка при регистрации:", error);
+            message.error("Регистрация не удалась. Пожалуйста, попробуйте снова.");
         }
     };
 
@@ -28,7 +34,7 @@ const SignUpForm = () => {
             <h2 className="login-form-title">Регистрация</h2>
             <Form form={form} layout="vertical" onFinish={onFinish}>
                 <Form.Item
-                    label="Name"
+                    label="Имя"
                     name="name"
                     rules={[
                         { required: true, message: "Пожалуйста, введите ваше имя!" },
@@ -42,6 +48,7 @@ const SignUpForm = () => {
                 >
                     <Input placeholder="Введите ваше имя" />
                 </Form.Item>
+
                 <Form.Item
                     label="Email"
                     name="email"
@@ -54,23 +61,37 @@ const SignUpForm = () => {
                 </Form.Item>
 
                 <Form.Item
+                    label="Код подтверждения"
+                    name="verificationCode"
+                    rules={[
+                        { required: true, message: "Пожалуйста, введите код подтверждения!" },
+                        { min: 6, message: "Код должен содержать не менее 6 символов!" },
+                        { max: 6, message: "Код должен содержать не более 6 символов!" },
+                    ]}
+                >
+                    <Input placeholder="Введите код подтверждения" />
+                </Form.Item>
+
+                <Form.Item
                     label="Пароль"
                     name="password"
-                    rules={[{ required: true, message: "Пожалуйста, введите пароль!" }]}
+                    rules={[
+                        { required: true, message: "Пожалуйста, введите пароль!" },
+                        { min: 8, message: "Пароль должен содержать не менее 8 символов!" },
+                    ]}
                 >
                     <Input.Password placeholder="Введите пароль" />
                 </Form.Item>
+
                 <Form.Item>
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                        <Button onClick={() => navigate('/login')} type="primary" htmlType="submit" loading={isLoading} block>
-                            Зарегестрироваться
+                    <div style={{ display: 'flex', gap: '10px' }} className=" container-button">
+                        <Button type="primary" htmlType="submit" loading={isLoading} block>
+                            Зарегистрироваться
                         </Button>
-                        <Button onClick={() => navigate('/login')} type="primary" >
+                        <Button onClick={() => navigate(RoutesPaths.login)} type="default">
                             Вернуться
                         </Button>
-
                     </div>
-
                 </Form.Item>
             </Form>
         </div>

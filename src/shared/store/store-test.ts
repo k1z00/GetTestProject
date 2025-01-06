@@ -34,7 +34,7 @@ export const useFetchStore = create<FetchState>((set) => ({
   resetTest: () => set({ test: null }),
   fetchTestById: async (id: number) => {
     try {
-      const response = await apiClient.FetchTestById(id.toString()); // Передаем id как строку
+      const response = await apiClient.FetchTestById(id.toString()); 
       set({ test: response });
     } catch (error) {
       console.error("Failed to fetch test:", error);

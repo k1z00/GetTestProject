@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useFetchStore } from "../../../../shared/store/store-test";
-import { useTestResultsStore } from "../../../../shared/store/store-result";
+import { useFetchStore } from "@shared/store/store-test";
+import { useTestResultsStore } from "@shared/store/store-result";
 import { useState, useEffect } from "react";
 import "../style/test-result.css";
 import { Card, Typography, List, Button } from "antd";

@@ -1,8 +1,9 @@
 import React from "react";
 import { Form, Input, Button, message } from "antd";
-import { useAuthStore } from "../../../../shared/store/auth.store";
+import { useAuthStore } from "@shared/store/auth.store";
 import "../style/login-form.css";
 import { useNavigate } from "react-router-dom";
+import { RoutesPaths } from "@shared/lib/router";
 
 
 
@@ -27,6 +28,9 @@ const LoginForm: React.FC = () => {
         console.error("An unknown error occurred:", err);
       }
   } }; 
+
+
+
 
   return (
     <div className="login-form-container">
@@ -58,7 +62,7 @@ const LoginForm: React.FC = () => {
             <Button htmlType="submit" loading={isLoading} block>
               Войти
             </Button>
-            <Button onClick={() => navigate('/singup')}  >
+            <Button onClick={() => navigate(RoutesPaths.sungup)}  >
               Регистрация
             </Button>
           </div>

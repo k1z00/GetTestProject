@@ -1,4 +1,4 @@
-import TestContent from "../../components/modules/test/ui/page-test";
+import TestContent from "@components/modules/test/ui/page-test";
 
 const TestPage: React.FC = () => {
   return (

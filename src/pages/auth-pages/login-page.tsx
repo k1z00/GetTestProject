@@ -1,7 +1,8 @@
-import LoginForm from "../../components/modules/auth/ui/login-form";
-  import React, { useEffect } from "react";
+import LoginForm from '@components/modules/auth/ui/login-form'
+import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../shared/store/auth.store";
+import { useAuthStore } from "@shared/store/auth.store";
+import { RoutesPaths } from '@shared/lib/router';
 
 const LoginPage:React.FC = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const LoginPage:React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/", { replace: true });
+      navigate(RoutesPaths.about, { replace: true });
     }
   }, [user, navigate]);
 return (

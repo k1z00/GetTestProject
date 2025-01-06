@@ -1,11 +1,11 @@
-import { apiClient } from "../../../../shared/lib/api-client";
+import { apiClient } from "@shared/lib/api-client";
 import { useState, useEffect } from "react";
 import "../style/test-list.css";
-import { Link, useNavigate } from "react-router-dom";
-import { PaginatedTestsResponse } from "../../../../types/models/test";
-import { Card, Button, List, Typography, Spin } from "antd";
-import { useAuthStore } from "../../../../shared/store/auth.store";
-import { TestResponse } from "../../../../types/models/test";
+import { Link} from "react-router-dom";
+import { PaginatedTestsResponse } from "@app/models/test";
+import {  Button, List, Typography, Spin } from "antd";
+import { TestResponse } from "@app/models/test";
+import { RoutesPaths } from "@shared/lib/router";
 
 const { Title, Paragraph } = Typography;
 
@@ -14,8 +14,8 @@ const TestList: React.FC = () => {
   const [page, setPage] = useState(1);
   const [totalTests, setTotalTests] = useState(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const { user: authUser } = useAuthStore();
-  const navigate = useNavigate();
+  
+ 
 
   const fetchTestsList = async (page: number) => {
     setLoading(true);
@@ -38,20 +38,6 @@ const TestList: React.FC = () => {
     fetchTestsList(page);
   }, [page]);
 
-  if (!authUser) {
-    return (
-      <div className="profile-container">
-        <Card className="profile-items" title={<h1>Список тестов</h1>}>
-          <Paragraph className="profile-paragraph">Для доступа к списку тестов необходимо быть авторизованным</Paragraph>
-          <div className="button-container">
-            <Button onClick={() => navigate('/login')} className="sing-profile">
-              Войти
-            </Button>
-          </div>
-        </Card>
-      </div>
-    );
-  }
 
   if (loading) return <Spin tip="Загрузка..." size="large" />;
 
@@ -75,7 +61,7 @@ const TestList: React.FC = () => {
                 <Paragraph><p>Источник: {test.source}</p></Paragraph>
               </div>
               <div>
-                <Link to={`/test/${test.id}`}>
+                <Link to={RoutesPaths.Test(test.id.toString())}>
                   <Button className="test-list-items-li-button" type="primary">
                     Пройти
                   </Button>

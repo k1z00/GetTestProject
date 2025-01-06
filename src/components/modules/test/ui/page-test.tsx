@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFetchStore } from "../../../../shared/store/store-test";
+import { useFetchStore } from "@shared/store/store-test";
 import { Button, Radio, Card, Typography, Space, Spin } from "antd";
 import "../style/page-test.css";
 import { useParams, useNavigate } from "react-router-dom";

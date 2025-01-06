@@ -1,5 +1,5 @@
 import React from "react";
-import SignUpForm from "../../components/modules/auth/ui/singup-form";
+import SignUpForm from "@components/modules/auth/ui/singup-form";
 
 
 

@@ -10,7 +10,7 @@ interface Question {
 }
 
 interface TestResponse {
-  id?: number;
+  id: number;
   title: string;
   seed: string;
   source: string;

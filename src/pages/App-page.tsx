@@ -12,6 +12,7 @@ import ResultPage from "./test-result-pages/test-result.pages";
 import TestListPage from "./test-list-pages/test-list-pages";
 import ProfileUser from "../components/modules/profile-user/ui/profile-user";
 import SingUpPage from "./auth-pages/singup-page";
+import MyTestPage from "./my-test/my-test";
 
 function AppPage() {
     return (
@@ -34,6 +35,7 @@ function AppPage() {
                     <Route path="/results" element={<ResultPage />} />
                     <Route path="/profile" element={<ProfileUser />} />
                     <Route path="/list" element={<TestListPage />} />
+                    <Route path="/mytest" element={<MyTestPage />} />
                 </Route>
             </Routes>
         </Router>

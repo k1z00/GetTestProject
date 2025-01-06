@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { apiClient } from "../../../../shared/lib/api-client";
-import { useAuthStore } from "../../../../shared/store/auth.store";
-import { User } from '../../../../types/models/test'
+import { apiClient } from "@shared/lib/api-client";
+import { useAuthStore } from "@shared/store/auth.store";
+import { User } from "@app/models/test";
 import '../style/profile-user.css'
 import { Card, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import { RoutesPaths } from "@shared/lib/router";
 
 
 const ProfileUser: React.FC = () => {
@@ -48,7 +49,7 @@ const ProfileUser: React.FC = () => {
                 <Card className="profile-items" title={<h1>Профиль</h1>}>
                     <p >Для просмотра профиля необходимо авторизоваться.</p>
                     <div className="button-container">
-                    <Button className="Button-exit" onClick={() => navigate('/login')}>
+                        <Button className="Button-exit" onClick={() => navigate(RoutesPaths.login)}>
                         Войти
                     </Button>
                     </div>
@@ -71,7 +72,7 @@ const ProfileUser: React.FC = () => {
 
     const hendelLogout = () => {
         logout()
-        navigate('/')
+        navigate(RoutesPaths.about)
     }
 
     return (
