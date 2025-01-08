@@ -1,5 +1,5 @@
 
-import { PaginatedTestsResponse, TestResponse, User } from "../../types/models/test";
+import { PaginatedTestsResponse, TestResponse, User } from "@app/models/test";
 import customFetch from  './custom-fetch'
 
 
