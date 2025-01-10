@@ -42,7 +42,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       const premisson = await apiClient.FetchUserPermissions(user.id.toString());
       localStorage.setItem("token", response.token);
-      console.log("Токен сохранен:", response.token);
+     
 
       
       set({ premisson, user, isLoading: false });
@@ -64,7 +64,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   checkAuth: async () => {
     const token = localStorage.getItem("token");
-    console.log("Токен из localStorage:", token);
+   
 
     if (token) {
       set({ isLoading: true, error: null });

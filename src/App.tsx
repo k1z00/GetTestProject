@@ -7,9 +7,7 @@ function App() {
   const { isLoading, error, checkAuth } = useAuthStore();
 
   useEffect(() => {
-    console.log("Вызов checkAuth");
     if (typeof window !== "undefined") {
-      console.log("Токен из localStorage:", localStorage.getItem("token"));
       checkAuth();
     }
   }, [checkAuth]);
