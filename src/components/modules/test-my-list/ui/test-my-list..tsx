@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "../style/my-list.css";
 import { Link} from "react-router-dom";
 import { PaginatedTestsResponse, TestResponse } from "@app/models/test";
-import {  Button, List, Typography, Spin } from "antd";
+import {  Button, List, Typography} from "antd";
 
 
 
@@ -14,12 +14,12 @@ const MyTestList: React.FC = () => {
     const [testsList, setTestsList] = useState<TestResponse[]>([]);
     const [page, setPage] = useState(1);
     const [totalTests, setTotalTests] = useState(0);
-    const [loading, setLoading] = useState<boolean>(false);
+   
    
     
 
     const fetchTestsList = async (page: number) => {
-        setLoading(true);
+     
 
         try {
             const response: PaginatedTestsResponse = await apiClient.FetchTestsUserList(page);
@@ -30,17 +30,17 @@ const MyTestList: React.FC = () => {
             }
         } catch {
             console.log("An error occurred");
-        } finally {
-            setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchTestsList(page);
+        fetchTestsList(page).then(() => {
+            window.scrollTo(0, 0); 
+        });;
     }, [page]);
 
 
-    if (loading) return <Spin tip="Загрузка..." size="large" />;
+    
 
     return (
         <div className="test-list-container">
@@ -48,7 +48,7 @@ const MyTestList: React.FC = () => {
                 <div className="test-list-items-head">
                     <div className="list-items-head-text">
                         <Title level={1} className="test-list-items-title">Список тестов</Title>
-                        <Paragraph><p>Всего тестов: {totalTests}</p></Paragraph>
+                        <Paragraph className="Paragraph-total"><p>Всего тестов: {totalTests}</p></Paragraph>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@ const MyTestList: React.FC = () => {
                                 <Title level={3}>{test.title}</Title>
                                 <Paragraph><p>Источник: {test.source}</p></Paragraph>
                             </div>
-                            <div>
+                            <div className="button-li">
                                 <Link to={`/test/${test.id}`}>
                                     <Button className="test-list-items-li-button" type="primary">
                                         Пройти

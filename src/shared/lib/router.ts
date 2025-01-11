@@ -2,7 +2,7 @@
 const about = '/'
  const sungup = '/singup'
  const login = '/login'
-const Test = (id: string) => `/test/${id}`
+const Test = (id: number) => `/test/${id}`
 
 
 

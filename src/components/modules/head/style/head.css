@@ -49,3 +49,76 @@
   gap: 25px;
   align-items: center;
 }
+.burger-menu {
+    display: none; 
+    font-size: 17px;
+    margin-right: 10px;
+    color: white;
+}
+
+
+
+
+.Drawer-head .ant-drawer-header {
+    background-color: var(--card-background); 
+    color: var(--card-text);
+    border-bottom: 1px solid #ccc; 
+}
+.Drawer-head .ant-drawer-header button{
+  color: var(--card-text);
+}
+
+.Drawer-head .ant-drawer-body {
+    background-color: var(--card-background); 
+}
+
+
+.Drawer-head .ant-menu {
+    background-color: var(--card-background) ;
+}
+
+.Drawer-head .ant-menu-item {
+    color: var(--card-text); 
+}
+
+.Drawer-head .ant-menu-item:hover {
+     background-color: var(--card-background); 
+     color: var(--card-text); 
+}
+
+.Drawer-head .ant-menu-item-selected {
+    background-color: var(--card-background) !important; 
+    color: var(--background-color); 
+}
+
+
+
+
+
+
+@media (max-width: 750px) {
+.custom-link {
+   font-size: 16px;
+}
+.head-item-info{
+    gap: 25px;
+}
+
+}
+
+
+
+@media (max-width: 650px) {
+    .head-item-info {
+        display: none;
+    }
+    .img-user{
+    width: 25px;
+}
+
+    .burger-menu {
+        display: block; 
+    }
+
+    
+}

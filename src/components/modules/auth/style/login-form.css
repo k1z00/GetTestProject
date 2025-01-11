@@ -36,3 +36,11 @@ background-color: var(--button-color-hover) !important;
 color: var(--button-color-text) !important ;
 border:  none !important;
 }
+
+
+@media (max-width: 600px) {
+  .login-form-container {
+    margin: 250px auto !important;
+   max-width: 90%  !important;
+  }
+}

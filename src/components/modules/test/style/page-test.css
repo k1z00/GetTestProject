@@ -1,6 +1,6 @@
 .page-test-container {
   padding: 24px;
-  margin-top: 250px;
+  margin-top: 200px;
   min-height: 100vh;
   color: white !important;
   
@@ -76,6 +76,9 @@ width: 100%;
   border: none;
 }
 
+.ant-card .ant-card-body {
+  padding: 7px;
+}
 
 .navigation-buttons-button.ant-btn:hover {
   background-color: var(--button-color-hover) !important;
@@ -107,3 +110,74 @@ width: 100%;
 
 
 
+@media  (max-width: 1200px) {
+  
+.page-ques-title p {
+  font-size: 17px !important;
+ margin-bottom: 13px !important;
+}
+.page-test-title p {
+font-size: 24px !important;
+}
+.page-ques-ul p {
+  font-size: 13px !important;
+}
+}
+
+@media  (max-width: 750px) {
+.page-ques-title p {
+  font-size: 13px !important;
+ margin-bottom: 10px !important;
+}
+.page-test-title p {
+font-size: 20px !important;
+}
+
+.ant-card .ant-card-body {
+  padding: 6px;
+}
+.navigation-buttons-button{
+  width: 110px !important;
+  font-size: 10px;
+}
+.page-ques-ul p {
+ font-size: 12px !important; 
+}
+.page-ques-ul {
+  padding: 0px;
+}
+.page-test-container{
+  margin-top: 150px;
+}.ant-typography{
+  margin-top: 0px;
+}
+}
+
+
+
+@media  (max-width: 450px) {
+.page-test-title p {
+font-size: 17px !important;
+ text-align: left !important;
+ margin-left: 10px;
+}.page-ques-title p {
+  font-size: 12px !important;
+}
+
+.ant-typography{
+  margin-top: 0px;
+ 
+}
+
+
+.page-ques-ul p {
+ font-size: 11px !important; 
+}
+.navigation-buttons-button{
+  width: 95px !important;
+  height: 25px;
+  font-size: 9px;
+}
+.page-test-items {
+  max-width: 100% ;}
+}

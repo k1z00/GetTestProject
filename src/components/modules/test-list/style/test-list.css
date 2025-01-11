@@ -3,33 +3,16 @@
   min-height: 100vh;
 }
 
-.test-list-items {
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-}
-
-.test-list-items-head {
-  margin-bottom: 24px;
-  text-align: center;
-  
-}
-
 .test-list-items-head h1 {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--card-text);;
+  color: var(--card-text);
 }
-
 
 .test-list-items-head p {
   font-size: 16px;
   color: var(--card-text);
- 
 }
 
 .test-list-items-ul {
@@ -46,8 +29,6 @@
   border-bottom: 1px solid #e8e8e8;
   transition: background-color 0.3s ease;
 }
-
-
 
 .test-list-items-li h3 {
   font-size: 18px;
@@ -82,7 +63,7 @@
   color: var(--button-color-text);
 }
 
-.button-container{
+.button-container {
   display: flex;
   justify-content: end;
 }
@@ -107,34 +88,28 @@
   border-color: var(--button-hover-color);
 }
 
-
-
-
-
-
 :where(.css-dev-only-do-not-override-1kf000u).ant-list-split .ant-list-item {
-    border-block-end: 1px solid var(--border-color-list);
+  border-block-end: 1px solid var(--border-color-list);
 }
 
-.button-pagination-btn{
+.button-pagination-btn {
   background-color: var(--button-color);
 }
 
 .profile-items h1 {
- text-align: center;
+  text-align: center;
   color: var(--card-text);
   font-size: 23px;
-
 }
 .profile-paragraph {
-font-size: 16px;
+  font-size: 16px;
   margin-bottom: 25px;
 
   color: var(--card-text);
 }
 
-.sing-profile{
-   background-color: var(--button-color);
+.sing-profile {
+  background-color: var(--button-color);
   color: var(--button-color-text);
   border: none;
 }
@@ -143,4 +118,59 @@ font-size: 16px;
   background-color: var(--button-color-hover) !important;
   color: var(--button-color-text) !important;
   border: none !important;
+}
+
+@media (max-width: 750px) {
+  .test-list-items-head h1 {
+    font-size: 25px !important;
+  }
+
+  .test-list-items-li {
+    display: block;
+  }
+  :where(.css-dev-only-do-not-override-1kf000u).ant-list .ant-list-item {
+    display: block;
+  }
+  .button-pagination button {
+    width: 150px;
+    font-size: 10px;
+  }
+  .button-li {
+    display: flex;
+    justify-content: end;
+  }
+  .Paragraph-total p {
+    font-size: 14px !important;
+
+    font-weight: bold;
+  }
+  
+  .test-list-items-head {
+    margin-bottom: 30px !important;
+  }
+  .text-title h3 {
+    font-size: 16px !important;
+  }
+  .text-title p {
+    font-size: 12px !important;
+  }
+
+  .test-list-items-li-button {
+    width: 50px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .test-list-items-head h1 {
+    font-size: 20px !important;
+  }
+  .Paragraph-total p {
+    font-size: 12px !important;
+  }.button-pagination button {
+    width: 90px;
+    height: 30px;
+    font-size: 10px;
+  }
 }

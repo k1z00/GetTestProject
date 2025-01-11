@@ -54,3 +54,24 @@
   color: var(--button-color-text) !important;
   border: none !important;
 }
+
+
+@media (max-width: 1000px) {
+.test-items {
+  width: 90%;
+ 
+}
+.test-container {
+  margin-top: 220px;
+}
+}
+
+@media (max-width: 450px) {
+.test-items {
+  width: 90%;
+ 
+}
+.test-container {
+  margin-top: 180px;
+}
+}

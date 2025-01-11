@@ -144,3 +144,45 @@ font-size: 16px;
   color: var(--button-color-text) !important;
   border: none !important;
 }
+
+@media (max-width: 750px) {
+  .test-list-items-head h1 {
+    font-size: 25px !important;
+  }
+  
+  .test-list-items-li {
+    display: block;
+  }
+  :where(.css-dev-only-do-not-override-1kf000u).ant-list .ant-list-item {
+    display: block;
+  }
+  .button-pagination button {
+    width: 150px;
+    font-size: 10px;
+  }
+  .button-li{
+    display: flex;
+    justify-content: end;
+  }
+ .Paragraph-total p {
+    font-size: 14px !important;
+
+    font-weight: bold;
+  }
+  .test-list-items-head {
+
+margin-bottom: 70px !important;
+  }
+  .text-title h3 {
+   font-size: 16px !important;
+  }
+  .text-title p {
+   font-size: 12px !important;
+  }
+
+  .test-list-items-li-button {
+    width: 50px;
+    height: 30px;
+    font-size: 10px
+  }
+}

@@ -133,7 +133,11 @@ useEffect(() => {
                     </div>
                   </div>
                   {isExpanded && (
+
                     <div className="li-info">
+                      <p className="li-queshion">
+                        {test?.questions[index].text}
+                      </p>
                       <span style={{ marginRight: '10px', fontWeight: "600" }}>Выбранный вариант:</span>
                       <span
                         className={`selected-answer ${

@@ -42,3 +42,19 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(16px);
 }
+
+
+@media (max-width: 650px) {
+ .switch {
+  width: 30px;
+  height: 20px;
+}
+input:checked + .slider:before {
+   transform: translateX(9px);
+}
+.slider:before {
+  height: 15px;
+   width: 15px;
+    bottom: 3px;
+}
+}

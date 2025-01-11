@@ -4,3 +4,13 @@
  left: 48%;
  z-index: 1000;
 }
+
+
+@media (max-width: 450px) {
+ .spin{
+ position: absolute;
+ top: 50%;
+ left: 37%;
+ z-index: 1000;
+}
+}

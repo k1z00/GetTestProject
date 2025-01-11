@@ -21,11 +21,14 @@ const HomeCreateTest: React.FC = () => {
   const [source, setSource] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
+ 
+
   type ApiFunctionType = (title?: string, source?: string) => Promise<TestResponse>;
 
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
+ 
   const handleSubmit = async () => {
     if (!title) {
       messageApi.error("Пожалуйста, заполните поле информации о желаемом тесте");
@@ -38,7 +41,8 @@ const HomeCreateTest: React.FC = () => {
       try {
         const response = await apiFunction(title, source);
         setTest(response);
-        navigate(RoutesPaths.Test(response.id.toString()));
+        navigate(RoutesPaths.Test(response.id))
+        
         messageApi.success("Тест успешно создан!");
         return response;
       } catch (error) {

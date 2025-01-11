@@ -1,9 +1,10 @@
 import React from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 import { useAuthStore } from "@shared/store/auth.store";
 import "../style/login-form.css";
 import { useNavigate } from "react-router-dom";
 import { RoutesPaths } from "@shared/lib/router";
+
 
 
 
@@ -20,12 +21,12 @@ const LoginForm: React.FC = () => {
       const values = await form.validateFields();
       const { email, password } = values;
       await login(email, password);
-      message.success("Вы успешно вошли в систему!");
     } catch (err) {
       if (err instanceof Error) {
         console.error("An error occurred:", err.message);
       } else {
         console.error("An unknown error occurred:", err);
+
       }
   } }; 
 
